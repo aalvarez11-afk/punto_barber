@@ -21,8 +21,9 @@
     Cache-Control = "public, max-age=0, must-revalidate"
 
 # Las imágenes sí se cachean: cambian poco y así el sitio carga rápido.
+# Solo img/: si la regla cubriera /assets/*, Netlify la sumaría a las de abajo.
 [[headers]]
-  for = "/assets/*"
+  for = "/assets/img/*"
   [headers.values]
     Cache-Control = "public, max-age=86400"
 
