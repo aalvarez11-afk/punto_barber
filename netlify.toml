@@ -20,8 +20,21 @@
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
 
-# CSS, JS e imágenes sí se cachean: cambian poco y así el sitio carga rápido.
+# Las imágenes sí se cachean: cambian poco y así el sitio carga rápido.
 [[headers]]
   for = "/assets/*"
   [headers.values]
     Cache-Control = "public, max-age=86400"
+
+# JS y CSS no: config.js trae el número de WhatsApp y las reglas de venta, y un
+# cambio tiene que verse ya, no al día siguiente. Pesan poco y el navegador
+# solo los vuelve a bajar si cambiaron (responde 304).
+[[headers]]
+  for = "/assets/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/assets/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
