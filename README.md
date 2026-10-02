@@ -5,19 +5,19 @@ shavers, combos, repuestos, styling, tijeras y capas, con carrito y pedido que s
 WhatsApp. Sitio estático, sin build: HTML, CSS y JavaScript sin dependencias. Construido sobre el
 motor de la tienda FabJak.
 
-Dirección prevista: **https://puntobarber.netlify.app** (si Netlify le da otro nombre, cambiarlo
-también en `index.html`, `assets/js/config.js` y en los prompts de MergeOn).
+En vivo en **https://puntobarber.netlify.app** (si el sitio cambia de nombre, cambiarlo también en
+`index.html`, `assets/js/config.js` y en los prompts de MergeOn).
 
 ## Publicar en Netlify
 
 **Add new site → Import an existing project → GitHub → este repo.** No hay que configurar nada:
 `netlify.toml` ya dice que no hay build y que se publica la raíz. Cada push a `main` redespliega.
 
-## Antes de mostrarla: el número de WhatsApp
+## El número de WhatsApp
 
-`assets/js/config.js`, campo `whatsapp.numero`: va **vacío** a propósito hasta saber qué línea
-queda conectada al agente de MergeOn (#318). Mientras esté vacío, la página muestra un aviso
-amarillo y los pedidos no llegan a ningún lado. Formato `57` + los 10 dígitos, sin espacios.
+Los pedidos llegan a la línea de demo **311 404 2863**, la que se conecta al agente de MergeOn (#318).
+Se cambia en `assets/js/config.js`, campo `whatsapp.numero`: `57` + los 10 dígitos, sin espacios. Si
+queda vacío, la página muestra un aviso amarillo. La línea real de la tienda es 323 512 1551.
 
 ## De dónde sale el catálogo
 

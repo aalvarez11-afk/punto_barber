@@ -26,7 +26,7 @@ const CONFIG = {
     // Formato: 57 + los 10 dígitos del celular. SIN +, SIN espacios, SIN guiones.
     // Va la línea conectada al agente de MergeOn (#318). Mientras esté vacío,
     // la página muestra un aviso amarillo y los pedidos no llegan a ningún lado.
-    numero: '',  // <-- CAMBIAR: ej. 573113140553. La del catálogo de la tienda es 573235121551
+    numero: '573114042863',  // <-- línea de demo conectada al agente. La del catálogo de la tienda es 573235121551
 
     // Mensaje del botón flotante (consultas generales, sin pedido)
     saludoGeneral: '¡Hola Punto Barber! Vi su tienda y quiero hacer una consulta.',
