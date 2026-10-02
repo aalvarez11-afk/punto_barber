@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a0a0a">
+<!-- Demo para presentar a la tienda: fuera de Google hasta que sea cliente -->
+<meta name="robots" content="noindex, nofollow">
+<title>Punto Barber — Todo para tu barbería en un solo lugar</title>
+<meta name="description" content="Distribuidora de artículos de barbería en Cali: más de 400 referencias en máquinas, patilleras, shavers, repuestos, styling, tijeras y capas. Al detal y al por mayor, con envío a toda Colombia.">
+
+<!-- Vista previa al compartir el link por WhatsApp -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Punto Barber — Todo para tu barbería en un solo lugar 💈">
+<meta property="og:description" content="Más de 400 referencias: Wahl, VGR, Kemei, WMark, Nish Man y más. Precio mayorista en pedidos de más de $200.000 y envío a toda Colombia.">
+<meta property="og:url" content="https://puntobarber.netlify.app/">
+<meta property="og:image" content="https://puntobarber.netlify.app/assets/img/og-puntobarber.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="assets/img/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap">
+<link rel="stylesheet" href="assets/css/estilos.css">
+</head>
+<body>
+
+<div id="avisos"></div>
+
+<header class="cabecera">
+  <div class="contenedor cabecera-inner">
+    <a href="./" class="logo">
+      <img src="assets/img/logo-128.webp" alt="" width="44" height="44">
+      <span>
+        <strong data-marca-nombre>Punto Barber</strong>
+        <small>Distribuidora de barbería · Cali</small>
+      </span>
+    </a>
+
+    <button id="btn-carrito" class="btn-carrito" aria-label="Ver carrito">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+      </svg>
+      <span id="contador-carrito" class="contador" hidden>0</span>
+    </button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="contenedor hero-inner">
+    <div class="hero-texto-col">
+      <p class="hero-sobre" data-marca-eslogan>Tu estilo, tu punto 💈</p>
+      <h1>Todo para tu barbería<span>en un solo lugar</span></h1>
+      <p class="hero-texto">Más de 400 referencias en máquinas, patilleras, shavers, repuestos, ceras, tijeras y capas de Wahl, VGR, Kemei, WMark, Nish Man y más. Al detal y al por mayor, con envío a toda Colombia. Arma tu pedido aquí y lo cerramos contigo por WhatsApp.</p>
+      <div class="hero-acciones">
+        <a href="#catalogo" class="btn btn-primario">Ver catálogo</a>
+        <a href="#mayoristas" class="btn btn-contorno">Precio mayorista</a>
+      </div>
+    </div>
+    <img class="hero-logo" src="assets/img/logo.webp" alt="Punto Barber — Tu estilo, tu punto" width="560" height="560" fetchpriority="high">
+  </div>
+  <div class="franja-barbero" aria-hidden="true"></div>
+</section>
+
+<ul class="sellos contenedor" aria-label="Por qué comprar aquí">
+  <li>
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20.59 13.41 13.42 20.58a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><circle cx="7" cy="7" r="1.5"/></svg>
+    <span><strong>Precio mayorista:</strong> más de $200.000, 10% menos y envío gratis</span>
+  </li>
+  <li>
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 3h15v13H1zM16 8h4l3 3v5h-7"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+    <span><strong>Envío gratis</strong> en máquinas y equipos a toda Colombia</span>
+  </li>
+  <li>
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+    <span><strong>Garantía de 3 meses</strong> en equipos y factura electrónica</span>
+  </li>
+</ul>
+
+<main class="contenedor" id="catalogo">
+
+  <h2 class="titulo-seccion">Catálogo</h2>
+
+  <div id="categorias" class="categorias" role="group" aria-label="Categorías"></div>
+
+  <div class="filtros">
+    <div class="campo campo-buscador">
+      <label for="buscador">Buscar</label>
+      <input type="search" id="buscador" placeholder="Magic Clip, patillera, cera, capa, guías…" autocomplete="off">
+    </div>
+    <div class="campo">
+      <label for="filtro-marca">Marca</label>
+      <select id="filtro-marca"><option value="">Todas</option></select>
+    </div>
+    <div class="campo">
+      <label for="orden">Ordenar por</label>
+      <select id="orden">
+        <option value="">Destacados</option>
+        <option value="precio-asc">Precio: menor a mayor</option>
+        <option value="precio-desc">Precio: mayor a menor</option>
+        <option value="nombre">Nombre (A-Z)</option>
+      </select>
+    </div>
+  </div>
+
+  <p id="contador-resultados" class="contador-resultados" aria-live="polite"></p>
+
+  <div id="estado"></div>
+  <div id="grid-productos" class="grid"></div>
+  <button id="btn-ver-mas" class="btn btn-secundario btn-ver-mas" hidden>Ver más</button>
+
+</main>
+
+<section class="mayoristas" id="mayoristas">
+  <div class="contenedor mayoristas-inner">
+    <div>
+      <p class="mayoristas-sobre">Para barberos y barberías</p>
+      <h2 class="titulo-seccion">¿Tienes barbería o vas a montar una?</h2>
+      <ul class="pasos">
+        <li><strong>Precio mayorista</strong><span>Si tu pedido pasa de $200.000, te descontamos el 10% del total.</span></li>
+        <li><strong>Envío gratis</strong><span>A toda Colombia en todos los pedidos mayoristas.</span></li>
+        <li><strong>Te armamos la lista</strong><span>Dinos cuántos puestos tienes y te proponemos lo básico: máquina, patillera, shaver, capas e insumos.</span></li>
+      </ul>
+      <p class="mayoristas-nota">¿Distribuyes o compras en volumen? Escríbenos y te damos condiciones de distribuidor.</p>
+    </div>
+    <a class="btn btn-primario" data-enlace-mayorista href="#" target="_blank" rel="noopener">Pedir por mayor</a>
+  </div>
+</section>
+
+<section class="visitanos">
+  <div class="contenedor visitanos-inner">
+    <div>
+      <h2 class="titulo-seccion">¿Cómo te llega?</h2>
+      <ul class="zonas">
+        <li><strong>Cali</strong><span>Domicilio por $7.000. Si pagas antes de las 2:00 p. m., te llega hoy mismo</span></li>
+        <li><strong>Resto de Colombia</strong><span>$12.000 por Interrapidísimo o Servientrega: de 1 a 4 días hábiles en la mayoría de ciudades</span></li>
+        <li><strong>Envío gratis</strong><span>Si tu pedido lleva una máquina o un equipo, o si pasa de $200.000</span></li>
+        <li><strong>Pago</strong><span>Transferencia o Nequi, con factura electrónica a tu nombre o al de tu barbería</span></li>
+      </ul>
+    </div>
+    <div class="visitanos-acciones">
+      <a class="btn btn-secundario" data-enlace-whatsapp href="#" target="_blank" rel="noopener">Escríbenos</a>
+      <a id="btn-instagram" class="btn btn-secundario" href="#" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+</section>
+
+<footer class="pie">
+  <div class="contenedor">
+    <p><strong data-marca-nombre>Punto Barber</strong> · Distribuidora de barbería en Cali · Pedidos por WhatsApp</p>
+    <nav class="pie-enlaces">
+      <a href="legal/datos-personales.html">Tratamiento de datos</a>
+      <a href="legal/terminos.html">Términos y condiciones</a>
+      <a href="legal/devoluciones.html">Garantía, cambios y devoluciones</a>
+    </nav>
+    <p class="pie-nota">Precios al detal en pesos colombianos (COP), IVA incluido.</p>
+  </div>
+</footer>
+
+<!-- Botón flotante de WhatsApp -->
+<a id="btn-whatsapp-flotante" class="wa-flotante" href="#" target="_blank" rel="noopener"
+   aria-label="Escríbenos por WhatsApp">
+  <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+    <path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.06 2.87 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.62.71.23 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2"/>
+  </svg>
+</a>
+
+<!-- Panel lateral del carrito -->
+<div id="fondo-oscuro" class="fondo-oscuro"></div>
+<aside id="panel-carrito" class="panel-carrito" aria-label="Carrito de compras">
+  <header class="panel-cabecera">
+    <h2>Tu pedido</h2>
+    <button id="cerrar-carrito" class="cerrar" aria-label="Cerrar carrito">&times;</button>
+  </header>
+  <div id="items-carrito" class="panel-cuerpo"></div>
+  <footer id="pie-carrito" class="panel-pie" hidden>
+    <div id="barra-mayorista" class="barra-mayorista"></div>
+    <div id="cuentas-carrito" class="cuentas"></div>
+    <button id="btn-checkout" class="btn btn-whatsapp btn-ancho">Finalizar pedido por WhatsApp</button>
+  </footer>
+</aside>
+
+<!-- Detalle del producto -->
+<div id="modal-producto" class="modal">
+  <div class="modal-caja modal-ancho">
+    <button class="modal-cerrar" aria-label="Cerrar">&times;</button>
+    <div class="modal-cuerpo"></div>
+  </div>
+</div>
+
+<!-- Datos del cliente antes de ir a WhatsApp -->
+<div id="modal-checkout" class="modal">
+  <div class="modal-caja">
+    <button class="modal-cerrar" aria-label="Cerrar">&times;</button>
+    <div class="modal-cuerpo">
+      <h2>Datos para tu pedido</h2>
+      <p class="sub">Con esto preparamos el envío y la factura electrónica. Nada se envía todavía: se abrirá WhatsApp con el mensaje escrito y tú lo revisas antes de mandarlo.</p>
+
+      <form id="form-checkout" class="form">
+        <div class="campo">
+          <label for="cli-nombre">Nombre completo o razón social *</label>
+          <input type="text" id="cli-nombre" required autocomplete="name" placeholder="Juan Pérez o Barbería El Punto">
+        </div>
+        <div class="fila-doble">
+          <div class="campo">
+            <label for="cli-documento">Cédula o NIT *</label>
+            <input type="text" id="cli-documento" required inputmode="numeric" autocomplete="off" placeholder="1144000000">
+          </div>
+          <div class="campo">
+            <label for="cli-correo">Correo para la factura *</label>
+            <input type="email" id="cli-correo" required autocomplete="email" placeholder="tucorreo@gmail.com">
+          </div>
+        </div>
+        <div class="fila-doble">
+          <div class="campo">
+            <label for="cli-ciudad">Ciudad *</label>
+            <input type="text" id="cli-ciudad" required autocomplete="address-level2" placeholder="Cali">
+          </div>
+          <div class="campo">
+            <label for="select-pago">Forma de pago</label>
+            <select id="select-pago"></select>
+          </div>
+        </div>
+        <div class="campo">
+          <label for="cli-direccion">Dirección de entrega *</label>
+          <input type="text" id="cli-direccion" required autocomplete="street-address" placeholder="Calle 5 #38-21, barrio San Fernando, local 2">
+        </div>
+        <div class="campo">
+          <label for="cli-notas">Notas (opcional)</label>
+          <textarea id="cli-notas" rows="2" placeholder="Color alterno si se agota, horario de entrega…"></textarea>
+        </div>
+
+        <div id="resumen-checkout" class="cuentas resumen-checkout"></div>
+
+        <button type="submit" class="btn btn-whatsapp btn-ancho">Abrir WhatsApp con mi pedido</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Confirmación -->
+<div id="modal-confirmacion" class="modal">
+  <div class="modal-caja">
+    <button class="modal-cerrar" aria-label="Cerrar">&times;</button>
+    <div class="modal-cuerpo"></div>
+  </div>
+</div>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/datos.js"></script>
+<script src="assets/js/carrito.js"></script>
+<script src="assets/js/whatsapp.js"></script>
+<script src="assets/js/catalogo.js"></script>
+</body>
+</html>
