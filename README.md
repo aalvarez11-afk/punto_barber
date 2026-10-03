@@ -54,6 +54,12 @@ total y los datos. Prefijo del pedido `PBW-` (pedido web; `PB-` son los códigos
 agente revisa el pedido contra el catálogo, manda el resumen para confirmar y **no confirma el
 pedido**: queda confirmado cuando la tienda recibe el pago.
 
+## Caché
+
+Las imágenes se guardan un día en el navegador; JS, CSS y el catálogo se revalidan en cada visita.
+Además, `index.html` y `legal/` llaman al JS y al CSS con `?v=2`: si alguna vez un cambio no se ve en
+un navegador que ya había abierto la página, subir ese número (`?v=3`) obliga a bajar la copia nueva.
+
 ## Dónde se cambia cada cosa
 
 | Qué | Dónde |
