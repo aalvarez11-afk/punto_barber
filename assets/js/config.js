@@ -1,5 +1,5 @@
 /**
- * Punto Barber — Configuración
+ * Barber Supply — Configuración
  * ============================================================
  *  ESTE ES EL ÚNICO ARCHIVO QUE NECESITAS EDITAR.
  *  Cambia los valores marcados con  <-- CAMBIAR
@@ -13,26 +13,27 @@ const CONFIG = {
 
   // ─── 1. DATOS DE LA TIENDA ──────────────────────────────────
   tienda: {
-    nombre: 'Punto Barber',
-    eslogan: 'Tu estilo, tu punto 💈',
-    descripcion: 'Distribuidora de artículos de barbería en Cali: máquinas, patilleras, shavers, repuestos, styling, tijeras y capas. Al detal y al por mayor, con envío a toda Colombia.',
-    ciudad: 'Cali, Valle',
+    // Marca genérica de demo: sin nombre, ciudad ni redes de una tienda real.
+    nombre: 'Barber Supply',
+    eslogan: 'Distribuidora de barbería 💈',
+    descripcion: 'Distribuidora de artículos de barbería: máquinas, patilleras, shavers, repuestos, styling, tijeras y capas. Al detal y al por mayor, con envío a toda Colombia.',
+    ciudad: '',
     direccion: '',
-    instagram: 'puntobarber55',
+    instagram: '',   // vacío: el botón de Instagram no se muestra
   },
 
   // ─── 2. WHATSAPP ────────────────────────────────────────────
   whatsapp: {
     // Formato: 57 + los 10 dígitos del celular. SIN +, SIN espacios, SIN guiones.
-    // Va la línea conectada al agente de MergeOn (#318). Mientras esté vacío,
+    // Va la línea de demo conectada al agente de MergeOn. Mientras esté vacío,
     // la página muestra un aviso amarillo y los pedidos no llegan a ningún lado.
-    numero: '573114042863',  // <-- línea de demo conectada al agente. La del catálogo de la tienda es 573235121551
+    numero: '573114042863',  // <-- línea de demo conectada al agente
 
     // Mensaje del botón flotante (consultas generales, sin pedido)
-    saludoGeneral: '¡Hola Punto Barber! Vi su tienda y quiero hacer una consulta.',
+    saludoGeneral: '¡Hola Barber Supply! Vi su tienda y quiero hacer una consulta.',
 
     // Mensaje del botón de mayoristas
-    saludoMayorista: '¡Hola Punto Barber! Tengo una barbería y quiero hacer un pedido al por mayor.',
+    saludoMayorista: '¡Hola Barber Supply! Tengo una barbería y quiero hacer un pedido al por mayor.',
   },
 
   // ─── 3. CONEXIÓN CON LA HOJA DE CÁLCULO ─────────────────────
@@ -61,10 +62,12 @@ const CONFIG = {
       descuento: 0.10,
     },
 
-    // Envío: gratis si el pedido lleva un equipo o es mayorista; si no, esto
+    // Envío: gratis si el pedido lleva un equipo o es mayorista; si no, la
+    // tarifa nacional. `local` es opcional, para una tienda que cobre distinto
+    // el domicilio en su ciudad: { ciudad: 'Medellín', precio: 7000 }.
     envio: {
-      cali: 7000,
       nacional: 12000,
+      local: null,
     },
 
     // Formas de pago que aparecen en el formulario del pedido.
@@ -93,7 +96,7 @@ const CONFIG = {
     colorPrincipal: '#c9913a',
     colorAcento:    '#e6b969',
 
-    imagenCompartir: 'https://puntobarber.netlify.app/assets/img/og-puntobarber.jpg',
+    imagenCompartir: 'https://puntobarber.netlify.app/assets/img/og-demo.jpg',
   },
 
   // ─── 7. AVANZADO ────────────────────────────────────────────

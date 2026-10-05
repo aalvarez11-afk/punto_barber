@@ -1,5 +1,5 @@
 /**
- * carrito.js — Carrito de compras de Punto Barber
+ * carrito.js — Carrito de compras de Barber Supply
  *
  * Guarda el pedido en el navegador del cliente (localStorage), así que
  * si cierra la página y vuelve más tarde, su pedido sigue ahí.
@@ -10,7 +10,7 @@
 
 const Carrito = (() => {
 
-  const CLAVE = 'puntobarber_carrito_v1';
+  const CLAVE = 'barbersupply_carrito_v1';
   let renglones = [];
   const suscriptores = [];
 
@@ -111,10 +111,17 @@ const Carrito = (() => {
     const descuento = esMayorista ? Math.round(subtotal * mayorista.descuento) : 0;
     const llevaEquipo = lista.some(r => r.envioGratis);
     const envioGratis = esMayorista || llevaEquipo;
-    const enCali = /\bcali\b/i.test(ciudad.normalize('NFD').replace(/[̀-ͯ]/g, ''));
-    const costoEnvio = envioGratis ? 0 : (ciudad.trim() ? (enCali ? envio.cali : envio.nacional) : null);
+    // Domicilio local (opcional en config.js): solo si la tienda lo cobra distinto.
+    // Sin tarifa local el envío no depende de la ciudad y se sabe desde el carrito.
+    const sinTildes = t => t.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+    const local = envio.local;
+    const enLocal = !!(local && ciudad.trim() && sinTildes(ciudad).includes(sinTildes(local.ciudad)));
+    const costoEnvio = envioGratis ? 0
+      : enLocal ? local.precio
+      : (local && !ciudad.trim()) ? null
+      : envio.nacional;
     return {
-      subtotal, esMayorista, descuento, llevaEquipo, envioGratis, enCali,
+      subtotal, esMayorista, descuento, llevaEquipo, envioGratis, enLocal,
       envio: costoEnvio,
       total: subtotal - descuento + (costoEnvio || 0),
       // Lo que falta para llegar al mínimo (hay que pasarlo: con justo $200.000 todavía no)

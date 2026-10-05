@@ -82,7 +82,7 @@ const WhatsApp = (() => {
   function textoEnvio(c) {
     if (c.envioGratis) return 'Gratis';
     if (c.envio === null) return 'por confirmar';
-    return c.enCali ? `${pesos(c.envio)} (domicilio Cali)` : pesos(c.envio);
+    return c.enLocal ? `${pesos(c.envio)} (domicilio ${CONFIG.ventas.envio.local.ciudad})` : pesos(c.envio);
   }
 
   /**

@@ -1,4 +1,4 @@
-# Configuración de despliegue de Punto Barber en Netlify
+# Configuración de despliegue de la tienda demo en Netlify
 # Sitio estático: no hay que compilar nada.
 
 [build]

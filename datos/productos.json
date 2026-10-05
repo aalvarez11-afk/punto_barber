@@ -1,6 +1,6 @@
 {
- "_comentario": "Catálogo DEMO de Punto Barber, generado con mergeon/generar-catalogo.js desde el PDF del catálogo (catalogo-fuente.tsv). Nombres, precios (al detal), marcas y fotos son los del PDF; el stock es INVENTADO para la demo y es el mismo que tiene MergeOn #318. En el inventario, talla = la opción (color, aroma, tipo o diseño) y \"Única\" si no tiene opciones.",
- "_sincronizado": "2026-10-02",
+ "_comentario": "Catálogo de la tienda demo (marca genérica), generado con generar-catalogo.js. Precios al detal; el stock es INVENTADO para la demo y es el mismo que tiene el agente de MergeOn. En el inventario, talla = la opción (color, aroma, tipo o diseño) y \"Única\" si no tiene opciones.",
+ "_sincronizado": "2026-10-05",
  "productos": [
   {
    "referencia": "PB-2",

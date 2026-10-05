@@ -1,5 +1,5 @@
 /**
- * catalogo.js — Interfaz de la tienda Punto Barber
+ * catalogo.js — Interfaz de la tienda Barber Supply
  *
  * Dibuja el catálogo, los filtros, el detalle de cada producto,
  * el carrito y el formulario que termina en WhatsApp.
@@ -61,7 +61,12 @@
     $('#btn-whatsapp-flotante').href = WhatsApp.enlaceGeneral();
     $$('[data-enlace-whatsapp]').forEach(el => el.href = WhatsApp.enlaceGeneral());
     $$('[data-enlace-mayorista]').forEach(el => el.href = WhatsApp.enlaceGeneral(CONFIG.whatsapp.saludoMayorista));
-    $('#btn-instagram').href = `https://www.instagram.com/${tienda.instagram}/`;
+    // Sin Instagram configurado, el botón no se muestra
+    const ig = $('#btn-instagram');
+    if (ig) {
+      ig.hidden = !tienda.instagram;
+      if (tienda.instagram) ig.href = `https://www.instagram.com/${tienda.instagram}/`;
+    }
   }
 
   // Si la hoja no responde el cliente no tiene por qué enterarse,
@@ -77,7 +82,7 @@
         '<code>assets/js/config.js</code> para mostrar tu inventario real.'
       );
     } else if (origen === 'respaldo') {
-      console.warn('[PuntoBarber] Mostrando el respaldo: la hoja de Google no respondió.');
+      console.warn('[BarberSupply] Mostrando el respaldo: la hoja de Google no respondió.');
       if (enModoPrueba) mostrarBanner('No se pudo leer la hoja de Google. Se está mostrando el respaldo.');
     }
 
@@ -482,7 +487,7 @@
     const { envio } = CONFIG.ventas;
     const pct = Math.round(CONFIG.ventas.mayorista.descuento * 100);
     const textoEnvio = c.envio === null && !c.envioGratis
-      ? `desde ${pesos(Math.min(envio.cali, envio.nacional))}`
+      ? `desde ${pesos(Math.min(envio.nacional, envio.local ? envio.local.precio : Infinity))}`
       : WhatsApp.textoEnvio(c);
     cont.innerHTML = `
       <div class="cuenta"><span>Subtotal</span><span>${pesos(c.subtotal)}</span></div>

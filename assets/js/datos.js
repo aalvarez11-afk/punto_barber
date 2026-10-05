@@ -1,5 +1,5 @@
 /**
- * datos.js — Capa de datos de Punto Barber
+ * datos.js — Capa de datos de Barber Supply
  *
  * Se encarga de traer el inventario desde la hoja de Google, entenderlo
  * y entregárselo al catálogo ya listo para mostrar. En la demo no hay hoja:
@@ -15,7 +15,7 @@
 
 const Datos = (() => {
 
-  const CLAVE_CACHE = 'puntobarber_datos_v1';
+  const CLAVE_CACHE = 'barbersupply_datos_v1';
 
   // ── Parser CSV (RFC 4180) ──────────────────────────────────
   // Maneja comillas dobles, comas dentro de campos y saltos de
@@ -168,7 +168,7 @@ const Datos = (() => {
 
     if (problemas.length) {
       console.warn(
-        `[PuntoBarber] Se encontraron ${problemas.length} problema(s) en la hoja de cálculo:\n  ` +
+        `[BarberSupply] Se encontraron ${problemas.length} problema(s) en la hoja de cálculo:\n  ` +
         problemas.join('\n  ') +
         '\n(El resto del catálogo se cargó con normalidad.)'
       );
@@ -267,7 +267,7 @@ const Datos = (() => {
         const [filasProductos, filasInventario] = await Promise.all([
           traerCSV(urlProductos),
           urlInventario ? traerCSV(urlInventario).catch(err => {
-            console.warn('[PuntoBarber] No se pudo leer la pestaña Inventario:', err.message);
+            console.warn('[BarberSupply] No se pudo leer la pestaña Inventario:', err.message);
             return [];
           }) : Promise.resolve([]),
         ]);
@@ -277,9 +277,9 @@ const Datos = (() => {
           guardarCache(productos);
           return { productos, origen: 'hoja' };
         }
-        console.warn('[PuntoBarber] La hoja se leyó pero no tiene productos válidos. Uso el respaldo.');
+        console.warn('[BarberSupply] La hoja se leyó pero no tiene productos válidos. Uso el respaldo.');
       } catch (err) {
-        console.warn('[PuntoBarber] No se pudo leer la hoja de Google:', err.message, '— uso el respaldo.');
+        console.warn('[BarberSupply] No se pudo leer la hoja de Google:', err.message, '— uso el respaldo.');
       }
     }
 
@@ -291,7 +291,7 @@ const Datos = (() => {
       const { productos } = construirCatalogo(datos.productos || [], datos.inventario || []);
       return { productos, origen: urlProductos ? 'respaldo' : 'ejemplo' };
     } catch (err) {
-      console.error('[PuntoBarber] Tampoco se pudo cargar el respaldo:', err.message);
+      console.error('[BarberSupply] Tampoco se pudo cargar el respaldo:', err.message);
       return { productos: [], origen: 'error' };
     }
   }

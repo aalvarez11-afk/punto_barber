@@ -1,46 +1,42 @@
-# Punto Barber — tienda web (demo)
+# Barber Supply — tienda web (demo)
 
-Catálogo de Punto Barber, distribuidora de artículos de barbería en Cali: máquinas, patilleras,
-shavers, combos, repuestos, styling, tijeras y capas, con carrito y pedido que se cierra por
-WhatsApp. Sitio estático, sin build: HTML, CSS y JavaScript sin dependencias. Construido sobre el
-motor de la tienda FabJak.
-
-En vivo en **https://puntobarber.netlify.app** (si el sitio cambia de nombre, cambiarlo también en
-`index.html`, `assets/js/config.js` y en los prompts de MergeOn).
+Tienda demo de una distribuidora de artículos de barbería: máquinas, patilleras, shavers, combos,
+repuestos, styling, tijeras y capas, con carrito y pedido que se cierra por WhatsApp. **Marca
+genérica**: el nombre, el logo y los textos son inventados; no corresponde a ninguna tienda real.
+Sitio estático, sin build: HTML, CSS y JavaScript sin dependencias.
 
 ## Publicar en Netlify
 
 **Add new site → Import an existing project → GitHub → este repo.** No hay que configurar nada:
 `netlify.toml` ya dice que no hay build y que se publica la raíz. Cada push a `main` redespliega.
+Si el sitio cambia de dirección, cambiarla también en `index.html` (og:url y og:image) y en
+`assets/js/config.js`.
 
 ## El número de WhatsApp
 
-Los pedidos llegan a la línea de demo **311 404 2863**, la que se conecta al agente de MergeOn (#318).
-Se cambia en `assets/js/config.js`, campo `whatsapp.numero`: `57` + los 10 dígitos, sin espacios. Si
-queda vacío, la página muestra un aviso amarillo. La línea real de la tienda es 323 512 1551.
+Los pedidos llegan a la línea de demo conectada al agente de MergeOn. Se cambia en
+`assets/js/config.js`, campo `whatsapp.numero`: `57` + los 10 dígitos, sin espacios. Si queda vacío,
+la página muestra un aviso amarillo.
 
-## De dónde sale el catálogo
+## El catálogo
 
-`datos/productos.json` **no se edita a mano**: lo genera `mergeon/generar-catalogo.js` (en la
-carpeta de la demo, fuera de este repo) desde el PDF del catálogo de la tienda. Trae **409
-productos** en 16 categorías con los **nombres, precios, marcas y fotos del PDF**. Las fotos están
-en `assets/img/productos/` (recortadas de cada página, 600 px en webp).
+`datos/productos.json` **no se edita a mano**: lo genera un script fuera de este repo. Trae **409
+productos** en 16 categorías, con fotos en `assets/img/productos/` (600 px en webp).
 
-- Los precios del catálogo son **al detal**.
-- El stock es inventado para la demo (el PDF no lo trae) y es el mismo que tiene MergeOn: el agente
-  de WhatsApp vende directo con él. Agotados a propósito: Wahl Magic Clip inalámbrica y cera
-  Nish Man 03.
-- Cada producto trae el código `PB-<página del PDF>`, el mismo `external_id` que tiene en MergeOn,
-  para que el agente lo encuentre cuando le llega un pedido desde la web.
+- Los precios del catálogo son **al detal**. El stock es inventado para la demo y es el mismo que
+  tiene el agente de MergeOn: vende directo con él.
+- Cada producto trae un código `PB-…`, el mismo `external_id` que tiene en MergeOn, para que el agente
+  lo encuentre cuando le llega un pedido desde la web.
 
-## Reglas comerciales (INVENTADAS para la demo, por confirmar con la tienda)
+## Reglas comerciales (de demo)
 
 Viven en `config.js` (`ventas.mayorista` y `ventas.envio`) y el carrito las calcula solo:
 
 - **Precio mayorista:** pedido de más de $200.000 → 10% de descuento sobre el total y envío gratis.
   El carrito muestra cuánto falta para llegar.
 - **Envío:** gratis si el pedido lleva un equipo (máquinas, patilleras, shavers, secadores…) o es
-  mayorista; si no, $7.000 de domicilio en Cali o $12.000 al resto del país.
+  mayorista; si no, $12.000 a cualquier ciudad. `ventas.envio.local` permite cobrar distinto el
+  domicilio en la ciudad de la tienda.
 - **Pago:** transferencia o Nequi, con factura electrónica (por eso el formulario pide cédula o NIT
   y correo).
 
@@ -50,30 +46,26 @@ Son las mismas que tiene el agente de MergeOn en su prompt: si cambian aquí, ha
 
 El formulario pide nombre o razón social, cédula o NIT, correo, ciudad, dirección y forma de pago, y
 abre WhatsApp con el pedido escrito: productos con su código, subtotal, descuento mayorista, envío,
-total y los datos. Prefijo del pedido `PBW-` (pedido web; `PB-` son los códigos de producto). El
-agente revisa el pedido contra el catálogo, manda el resumen para confirmar y **no confirma el
-pedido**: queda confirmado cuando la tienda recibe el pago.
+total y los datos. Prefijo del pedido `PBW-` (pedido web). El agente revisa el pedido contra el
+catálogo, manda el resumen para confirmar y **no confirma el pedido**: queda confirmado cuando la
+tienda recibe el pago.
 
 ## Caché
 
 Las imágenes se guardan un día en el navegador; JS, CSS y el catálogo se revalidan en cada visita.
-Además, `index.html` y `legal/` llaman al JS y al CSS con `?v=2`: si alguna vez un cambio no se ve en
-un navegador que ya había abierto la página, subir ese número (`?v=3`) obliga a bajar la copia nueva.
+Además, `index.html` y `legal/` llaman al JS y al CSS con `?v=N`: si alguna vez un cambio no se ve en
+un navegador que ya había abierto la página, subir ese número obliga a bajar la copia nueva.
 
 ## Dónde se cambia cada cosa
 
 | Qué | Dónde |
 |---|---|
-| Número de WhatsApp, reglas de mayorista y envío, formas de pago, colores | `assets/js/config.js` |
+| Nombre, número de WhatsApp, reglas de mayorista y envío, formas de pago, colores | `assets/js/config.js` |
 | Productos, precios, stock (generado) | `datos/productos.json` |
-| Fotos, logo, favicon e imagen al compartir el link (generadas con `herramientas/web-assets.py`) | `assets/img/` |
+| Fotos, logo, favicon e imagen al compartir el link | `assets/img/` |
 | Textos legales (campos entre corchetes por completar) | `legal/` |
 
-## Pendiente antes de usarla con clientes reales
-
-- Confirmar las reglas comerciales, la garantía y los envíos.
-- Completar razón social, NIT, dirección y correo en `legal/`.
-- Está marcada `noindex` y `robots.txt` bloquea buscadores: abrirla cuando sea cliente.
+Está marcada `noindex` y `robots.txt` bloquea buscadores.
 
 ## Local
 
